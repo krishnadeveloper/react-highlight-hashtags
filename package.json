@@ -1,0 +1,36 @@
+{
+  "name": "react-highlight-hashtags",
+  "version": "1.0.2",
+  "description": "Highlight all hashtags in text",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-html-parser": "^2.0.2"
+  },
+  "keywords": [
+    "hashtag",
+    "highlight",
+    "all",
+    "matched",
+    "hashtags",
+    "detect",
+    "hashtags",
+    "hashtags",
+    "in",
+    "text",
+    "find",
+    "hashtag",
+    "hashtag",
+    "checker",
+    "multiple",
+    "hashtag",
+    "checker"
+  ],
+  "author": "Krishna Kumar",
+  "license": "ISC"
+}
