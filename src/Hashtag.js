@@ -1,22 +1,22 @@
-import React from "react";
-import htmlParser from "react-html-parser";
+import React, { useState, useEffect } from "react";
+import PropTypes from 'prop-types';
 
-String.prototype.highlightHashtags = function(){
-    let str = this;
-    str = str.replace(/\n/g, '<br>');
-			if(!str.match(/(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?#([a-zA-Z0-9]+)/g) && !str.match(/(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?@([a-zA-Z0-9]+)/g) && !str.match(/(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?#([\u0600-\u06FF]+)/g) && !str.match(/(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?@([\u0600-\u06FF]+)/g)) {
-                if(!str.match(/#(([_a-zA-Z0-9]+)|([\u0600-\u06FF]+)|([ㄱ-ㅎㅏ-ㅣ가-힣]+)|([ぁ-んァ-ン]+)|([一-龯]+))#/g)) { //arabic support, CJK support
-					str = str.replace(/#(([_a-zA-Z0-9]+)|([\u0600-\u06FF]+)|([ㄱ-ㅎㅏ-ㅣ가-힣]+)|([ぁ-んァ-ン]+)|([一-龯]+))/g,'<mark>#$1</mark>');
-				}else{
-					str = str.replace(/#(([_a-zA-Z0-9]+)|([\u0600-\u06FF]+)|([ㄱ-ㅎㅏ-ㅣ가-힣]+)|([ぁ-んァ-ン]+)|([一-龯]+))#(([_a-zA-Z0-9]+)|([\u0600-\u06FF]+)|([ㄱ-ㅎㅏ-ㅣ가-힣]+)|([ぁ-んァ-ン]+)|([一-龯]+))/g,'<mark>#$1</mark>');
-				}
-            }
-    return str;
+function Hashtags({text}) {
+  const [hashtagsString, sethashtagsString] = useState('');
+  
+  useEffect(() => {
+    let updatedText = text.split(' ').map((item) => {
+      if (item.search('#')) return item;
+      else return `<span style=color:blue>${item}</span>`;
+    }).join(' ');
+    sethashtagsString(updatedText);
+  },[text])
+
+  return <div dangerouslySetInnerHTML={{__html: hashtagsString}}/>
 }
 
-const Hashtags = props =>{
-    return props.hasOwnProperty('text')?htmlParser(props.text.highlightHashtags()):htmlParser(props.children.highlightHashtags())
-}
-
+HashTags.propTypes = {
+  text: PropTypes.string.isRequired
+};
 
 export default Hashtags;
