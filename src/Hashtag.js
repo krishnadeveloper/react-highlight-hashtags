@@ -7,7 +7,7 @@ function Hashtags({text}) {
   useEffect(() => {
     let updatedText = text.split(' ').map((item) => {
       if (item.search('#')) return item;
-      else return `<span style=color:blue>${item}</span>`;
+      else return `<mark>${item}</mark>`;
     }).join(' ');
     sethashtagsString(updatedText);
   },[text])
