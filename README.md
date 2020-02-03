@@ -21,18 +21,6 @@ import Hashtags from 'react-highlight-hashtags';
 ## Basic usage
 
 Render a `<Hashtags>` component with ot without a `text` prop whose value is a valid text. The `children` prop should be a text.
-
-```jsx
-import React from 'react';
-import Hashtags from 'react-highlight-hashtags';
-
-class App extends React.Component {
-  render() {
-    return (
-        <Hashtags> Hi, #highlight #hash tags</Hashtags>
-    );
-  }
-}
 ```
 
 ```jsx
@@ -50,12 +38,11 @@ class App extends React.Component {
 
 ## props
 
-There is only one optional props.
+There is only one props.
 
 |prop|description|example|
 |---|---|---|
 |text|any text with or without #hashtags.|`<Hashtags text="Hi, #highlight #hash tags" />`|
-|children|any text with or without #hashtags.|`<Hashtags> Hi, #highlight #hash tags</Hashtags>`|
 
 ## style
 
